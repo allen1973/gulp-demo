@@ -91,7 +91,9 @@ gulp.task('sass', function(){
   return gulp.src(['./source/stylesheets/**/*.sass', './source/stylesheets/**/*.scss'])
     .pipe($.plumber())
     .pipe( $.sourcemaps.init())
-    .pipe($.sass({outputStyle: 'nested'})
+    //.pipe($.sass({outputStyle: 'nested'})
+    //gulp add bs4 Task
+    .pipe($.sass({outputStyle: 'nested',includePath:'./node_modules/bootstrap/scss"    })
       .on('error', $.sass.logError))
     .pipe($.postcss(processors))
     .pipe( $.if(options.env === 'production', $.minifyCss()) ) // 假設開發環境則壓縮 CSS
